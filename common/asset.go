@@ -13,6 +13,7 @@ import (
 	"github.com/MixinNetwork/mixin/domains/monero"
 	"github.com/MixinNetwork/mixin/domains/polkadot"
 	"github.com/MixinNetwork/mixin/domains/siacoin"
+	"github.com/MixinNetwork/mixin/domains/solana"
 	"github.com/MixinNetwork/mixin/domains/tron"
 	"github.com/MixinNetwork/mixin/domains/zcash"
 )
@@ -46,6 +47,8 @@ func (a *Asset) Verify() error {
 		return dogecoin.VerifyAssetKey(a.AssetKey)
 	case siacoin.SiacoinChainId:
 		return siacoin.VerifyAssetKey(a.AssetKey)
+	case solana.SolanaChainId:
+		return solana.VerifyAssetKey(a.AssetKey)
 	case polkadot.PolkadotChainId:
 		return polkadot.VerifyAssetKey(a.AssetKey)
 	case eos.EOSChainId:
@@ -75,6 +78,8 @@ func (a *Asset) AssetId() crypto.Hash {
 		return dogecoin.GenerateAssetId(a.AssetKey)
 	case siacoin.SiacoinChainId:
 		return siacoin.GenerateAssetId(a.AssetKey)
+	case solana.SolanaChainId:
+		return solana.GenerateAssetId(a.AssetKey)
 	case polkadot.PolkadotChainId:
 		return polkadot.GenerateAssetId(a.AssetKey)
 	case eos.EOSChainId:
@@ -104,6 +109,8 @@ func (a *Asset) FeeAssetId() crypto.Hash {
 		return dogecoin.DogecoinChainId
 	case siacoin.SiacoinChainId:
 		return siacoin.SiacoinChainId
+	case solana.SolanaChainId:
+		return solana.SolanaChainId
 	case polkadot.PolkadotChainId:
 		return polkadot.PolkadotChainId
 	case eos.EOSChainId:
